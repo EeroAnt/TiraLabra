@@ -1,4 +1,4 @@
-##RSA-salaus
+## RSA-salaus
 
 Teen työni Pythonilla, sillä se on ainoa kieli, jonka tunnen. Aiheeksi valitsen RSA-salauksen. Lähden rakentamaan työkalua, joka tuottaa RSA-avaimia turvallisesti. Syötteitä ei sinänsä tulisi tarvita
 
