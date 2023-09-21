@@ -2,8 +2,6 @@ import random
 import math
 
 def probable_prime_test(target: int, attempts: int, first_primes: list):
-    if target%2 == 0:
-        return "Ei alkuluku, parillinen"
     for i in first_primes:
         if target%i == 0:
             return "Ei alkuluku, jaollinen pienellä alkuluvulla"
@@ -11,7 +9,7 @@ def probable_prime_test(target: int, attempts: int, first_primes: list):
     past_attempts = []
     for i in range(attempts):
         while True:
-            a = random.randint(557,target-2)
+            a = random.randint(547,target-2)
             if a not in past_attempts:
                 break
         past_attempts.append(a)
@@ -34,7 +32,7 @@ def factor_out(number):
     return (i, int(number))
 
 def first_primes():
-    primes = []
+    primes = [2]
     prime_candidate = 3
     while len(primes) < 100:
         not_a_prime = False
