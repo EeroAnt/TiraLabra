@@ -5,11 +5,11 @@ def probable_prime_test(target: int, attempts: int, first_primes: list):
     if target%2 == 0:
         return "Ei alkuluku, parillinen"
     for i in first_primes:
-        if target%first_primes == 0:
+        if target%i == 0:
             return "Ei alkuluku, jaollinen pienellä alkuluvulla"
     (s, d)=factor_out(target-1)
     for i in range(attempts):
-        a = random.randint(2,target-2)
+        a = random.randint(557,target-2)
         x = a%target
         for ii in range(1,d):
             x = (x*a)%target
