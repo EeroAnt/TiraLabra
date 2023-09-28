@@ -1,29 +1,30 @@
 import random
 import math
+import sympy
 
 def probable_prime_test(target: int, attempts: int, first_primes: list):
     for i in first_primes:
         if target%i == 0:
-            return "Ei alkuluku, jaollinen pienellä alkuluvulla"
+            return False
     (s, d)=factor_out(target-1)
     for ii in range(attempts):
-        a = random.randint(1009,target-2)
+        a = random.randint(2,target-1)
         x = pow(a,d,target)
         for iii in range(s):
             y = pow(x,2,target)
             if y == 1 and x !=1 and x != target-1:
-                return "Ei alkuluku"
+                return False
             x = y
-        # if y != 1:                tämä klausaali nähtävästi tuotti hitautta. en tiedä saako sen poistaa toisaalta
-        #     return "Ei alkuluku"
-    return "Luultavasti alkuluku"
+        if y != 1:
+            return False
+    return True
 
 def factor_out(number):
     i = 0
     while number%2 == 0:
         i += 1
-        number /= 2
-    return (i, int(number))
+        number //= 2
+    return (i, number)
 
 def first_primes():
     primes = [2]
@@ -39,3 +40,6 @@ def first_primes():
             primes.append(prime_candidate)
         prime_candidate += 2
     return primes
+
+def is_prime(number):
+    return sympy.isprime(number)
