@@ -1,6 +1,12 @@
 import random
 import math
 
+# probable_prime_test tapailee Miller-Rabin algoritmia. Karsin kuitenkin ensin
+# kaikki luvut pois, jotka jaollisia luvuilla 1000 ja alaspäin. Factor_out
+# jakaa parillisen luvun kahden potensseihin ja parittomaan tekijään, joilla
+# Miller-Rabin toimii
+
+
 def probable_prime_test(target: int, attempts: int, first_primes: list):
     for i in first_primes:
         if target%i == 0:
