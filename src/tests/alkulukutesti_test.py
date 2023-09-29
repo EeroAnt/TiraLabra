@@ -5,7 +5,7 @@ import Funktiot.alkulukugeneraattori as subject_generator
 
 class TestFirstPrimes(unittest.TestCase):
     def setUp(self):
-        self.first_primes_attempt = subject_test.first_primes()
+        self.first_primes_attempt = subject_test._first_primes()
         self.first_primes_actual =[2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31,
                                    37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 
                                    79, 83, 89, 97, 101, 103, 107, 109, 113,
@@ -35,30 +35,30 @@ class TestFirstPrimes(unittest.TestCase):
 
 class TestFactorOut(unittest.TestCase):
     def test_odd(self):
-        self.assertEqual(subject_test.factor_out(20001),(0,20001))
+        self.assertEqual(subject_test._factor_out(20001),(0,20001))
 
     def test_even(self):
-        self.assertEqual(subject_test.factor_out(20000),(5,625))
+        self.assertEqual(subject_test._factor_out(20000),(5,625))
 
 class TestProbablePrimeTest(unittest.TestCase):
     def setUp(self):
-        self.first_primes =subject_test.first_primes()
+        self.first_primes =subject_test._first_primes()
     
     def test_divisible_by_small_prime(self):
-        self.assertEqual(subject_test.probable_prime_test(292681,40,self.first_primes),False)
+        self.assertEqual(subject_test._probable_prime_test(292681,40,self.first_primes),False)
     
     def test_probable_prime(self):
-        self.assertEqual(subject_test.probable_prime_test(912991,40,self.first_primes), True)
+        self.assertEqual(subject_test._probable_prime_test(912991,40,self.first_primes), True)
 
 class TestPrimeGeneration(unittest.TestCase):
     def setUp(self):
-        self.first_primes = subject_test.first_primes()
+        self.first_primes = subject_test._first_primes()
     
     def test_primes(self):
         primes_to_check = []
         results = []
         for _ in range(40):
-            primes_to_check.append(subject_generator.generate_probable_prime(1024,40))
+            primes_to_check.append(subject_generator._generate_probable_prime(1024,40))
         for i in primes_to_check:
             results.append(sympy.isprime(i))
         self.assertGreaterEqual(results.count(True),38)

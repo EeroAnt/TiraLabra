@@ -7,11 +7,11 @@ import math
 # Miller-Rabin toimii
 
 
-def probable_prime_test(target: int, attempts: int, first_primes: list):
+def _probable_prime_test(target: int, attempts: int, first_primes: list):
     for i in first_primes:
         if target%i == 0:
             return False
-    (s, d)=factor_out(target-1)
+    (s, d)=_factor_out(target-1)
     for ii in range(attempts):
         a = random.randint(2,target-1)
         x = pow(a,d,target)
@@ -24,14 +24,14 @@ def probable_prime_test(target: int, attempts: int, first_primes: list):
             return False
     return True
 
-def factor_out(number):
+def _factor_out(number):
     i = 0
     while number%2 == 0:
         i += 1
         number //= 2
     return (i, number)
 
-def first_primes():
+def _first_primes():
     primes = [2]
     prime_candidate = 3
     while prime_candidate < 1000:
