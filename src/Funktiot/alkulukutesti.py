@@ -1,6 +1,5 @@
 import random
 import math
-import sympy
 
 def probable_prime_test(target: int, attempts: int, first_primes: list):
     for i in first_primes:
@@ -40,6 +39,3 @@ def first_primes():
             primes.append(prime_candidate)
         prime_candidate += 2
     return primes
-
-def is_prime(number):
-    return sympy.isprime(number)
