@@ -5,3 +5,5 @@
 [Viikkoraportit](https://github.com/EeroAnt/TiraLabra/tree/main/Dokumentaatio/Viikkoraportit)
 
 [Testausdokumentti](https://github.com/EeroAnt/TiraLabra/tree/main/Dokumentaatio/Testaus.md)
+
+[Toteutusdokumentti](https://github.com/EeroAnt/TiraLabra/tree/main/Dokumentaatio/Toteutusdokumentti.pdf)
