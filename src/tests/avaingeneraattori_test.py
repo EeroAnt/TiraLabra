@@ -10,3 +10,6 @@ class TestFunctions(unittest.TestCase):
     
     def test_eucleidian_div_quotient(self):
         return self.assertEqual(subject._quotient_from_eucleidian_div(244,5),48)
+    
+    def test_extended_gcd(self):
+        return self.assertEqual(subject._extended_gcd(240,46),47)
