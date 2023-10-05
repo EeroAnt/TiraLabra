@@ -1,5 +1,6 @@
 import Funktiot.alkulukugeneraattori as primegenerator
 import Funktiot.avaingeneraattori as keygenerator
+import Funktiot.avaintallennus as save
 
 def UI():
     while True:
@@ -17,5 +18,7 @@ def UI():
         if choise == 2:
             (public_modulus, public_exponent, private_decryptor) = keygenerator._generate_key()
             print(f"Julkinen avain ({public_modulus}, {public_exponent}) ja yksityinen avain {private_decryptor}")
+            name = input("Millä nimellä avain tallennetaan? ")
+            save._save_key(name, public_modulus,public_exponent,private_decryptor)
         if choise == 0:
             break
