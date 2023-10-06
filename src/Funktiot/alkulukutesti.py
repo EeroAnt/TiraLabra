@@ -1,5 +1,6 @@
 import random
 import math
+import Funktiot.matikkapalikat as mathaid
 
 # probable_prime_test tapailee Miller-Rabin algoritmia. Karsin kuitenkin ensin
 # kaikki luvut pois, jotka jaollisia luvuilla 1000 ja alaspäin. Factor_out
@@ -11,7 +12,7 @@ def _probable_prime_test(target: int, attempts: int, first_primes: list):
     for i in first_primes:
         if target%i == 0:
             return False
-    (s, d)=_factor_out(target-1)
+    (s, d)=mathaid._factor_out(target-1)
     for ii in range(attempts):
         a = random.randint(2,target-1)
         x = pow(a,d,target)
@@ -23,13 +24,6 @@ def _probable_prime_test(target: int, attempts: int, first_primes: list):
         if y != 1:
             return False
     return True
-
-def _factor_out(number):
-    i = 0
-    while number%2 == 0:
-        i += 1
-        number //= 2
-    return (i, number)
 
 def _first_primes():
     primes = [2]
