@@ -27,14 +27,14 @@ def UI():
             msg_to_encrypt = input("Salattava viesti: ")
             key_to_use = input("Millä avaimella: ")
             public_key = keyhandler._get_key(key_to_use+"_public")
-            encrypt._encrypt(msg_to_encrypt, public_key)
+            if public_key != None:
+                encrypt._encrypt(msg_to_encrypt, public_key)
+                print("Salattu")
         if choise =="4":
             file_to_decrypt = input("Minkä nimisen tiedoston viestin salaus puretaan? ")
             key_to_use = input("Millä avaimella: ")
-            private_key = keyhandler._get_key(key_to_use+"_public")
-            encrypt._decrypt(file_to_decrypt,private_key)
-        if choise =="5":
-            string =input()
-            encrypt.testing(string)
+            private_key = keyhandler._get_key(key_to_use+"_private")
+            if private_key != None:
+                encrypt._decrypt(file_to_decrypt,private_key)
         if choise == "0":
             break

@@ -13,6 +13,9 @@ def _save_key(name, public_modulus,public_exponent,private_decryptor):
         file.writelines(str(public_modulus)+"\n")
 
 def _get_key(key):
-    with open("keys/"+key,'r') as file:
-        keys = file.readlines()
-    return (keys[0],keys[1])
+    try:
+        with open("keys/"+key,'r') as file:
+            keys = file.readlines()
+        return (keys[0],keys[1])
+    except:
+        print("Avainta ei löytynyt")
