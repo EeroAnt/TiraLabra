@@ -2,6 +2,7 @@ import unittest
 import sympy
 import Funktiot.alkulukutesti as subject_test
 import Funktiot.alkulukugeneraattori as subject_generator
+import Funktiot.matikkapalikat as math_help
 
 class TestFirstPrimes(unittest.TestCase):
     def setUp(self):
@@ -35,10 +36,10 @@ class TestFirstPrimes(unittest.TestCase):
 
 class TestFactorOut(unittest.TestCase):
     def test_odd(self):
-        self.assertEqual(subject_test._factor_out(20001),(0,20001))
+        self.assertEqual(math_help._factor_out(20001),(0,20001))
 
     def test_even(self):
-        self.assertEqual(subject_test._factor_out(20000),(5,625))
+        self.assertEqual(math_help._factor_out(20000),(5,625))
 
 class TestProbablePrimeTest(unittest.TestCase):
     def setUp(self):

@@ -1,5 +1,5 @@
 import unittest
-import Funktiot.avaingeneraattori as subject
+import Funktiot.matikkapalikat as subject
 
 class TestFunctions(unittest.TestCase):
     def test_gcd(self):
