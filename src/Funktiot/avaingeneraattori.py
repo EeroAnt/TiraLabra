@@ -8,6 +8,15 @@ import random
 # lambda_n nollataan varuilta. Niiden avulla voisi laskea avaimen 
 # salaisen osan.
 
+# Haluamme 1024-bittisiä lukuja. Siispä annamme ensimmäiseksi
+# parametriksi "_generate_probable_prime" funktiolle 1024. Tämän
+# kokoisille alkuluvuille 40 on sopiva määrä "haastamisia"
+# useamman lähteen mukaan. Siispä tämä toiseksi parametriksi
+
+# Valitsen e:n väliltä 100, 10000 (kuitenkin pienempi kuin
+# lambda_n) kompromissina tehokkuuden ja turvallisuuden välille.
+# Tarkempaa infoa toteutusdokumentissa 
+
 def _generate_key():
     p = primegenerator._generate_probable_prime(1024,40)
     q = primegenerator._generate_probable_prime(1024,40)
@@ -15,10 +24,9 @@ def _generate_key():
         q = primegenerator._generate_probable_prime(1024,40)
     n = p*q
     lambda_n=mathaid._lcm(p-1,q-1)
-    while True:
+    e = random.randint(100,min(lambda_n,10**5))
+    while mathaid._gcd(lambda_n,e) != 1:
         e = random.randint(100,min(lambda_n,10**5))
-        if mathaid._gcd(lambda_n,e) == 1:
-            break
     d = mathaid._extended_gcd(lambda_n,e)
     p,q,lambda_n=0,0,0
     return (n,e,d)
