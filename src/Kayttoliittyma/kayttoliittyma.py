@@ -24,17 +24,29 @@ def UI():
         if choise == "2":
             msg_to_encrypt = input("Salattava viesti: ")
             key_to_use = input("Millä avaimella: ")
-            public_key = keyhandler._get_key(key_to_use+"_public")
-            name_of_message = input("Minkä nimiseen tiedostoon viesti tallennetaan?\nJätä tiedostopäätteet pois ja mielellään myös erikoismerkit varuilta  ")
-            if public_key != None:
-                encrypt._encrypt(msg_to_encrypt, public_key, name_of_message)
+            key_type = input("Julkinen vai yksityinen? (j/y)")
+            if key_type == "j":
+                key = keyhandler._get_key(key_to_use+"_public")
+            elif key_type == "y":
+                key = keyhandler._get_key(key_to_use+"_private")
+            else:
+                key = None
+            if key != None:
+                name_of_message = input("Minkä nimiseen tiedostoon viesti tallennetaan?\nJätä tiedostopäätteet pois ja mielellään myös erikoismerkit varuilta  ")
+                encrypt._encrypt(msg_to_encrypt, key, name_of_message)
                 print("Salattu")
         if choise =="3":
             file_to_decrypt = input("Minkä nimisen tiedoston viestin salaus puretaan? ")
             key_to_use = input("Millä avaimella: ")
-            private_key = keyhandler._get_key(key_to_use+"_private")
-            if private_key != None:
-                message = encrypt._decrypt(file_to_decrypt,private_key)
+            key_type = input("Julkinen vai yksityinen? (j/y)")
+            if key_type == "j":
+                key = keyhandler._get_key(key_to_use+"_public")
+            elif key_type == "y":
+                key = keyhandler._get_key(key_to_use+"_private")
+            else:
+                key = None
+            if key != None:
+                message = encrypt._decrypt(file_to_decrypt,key)
                 print(message)
         if choise == "0":
             break
