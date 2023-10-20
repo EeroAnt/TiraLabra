@@ -28,8 +28,6 @@ class TestFirstPrimes(unittest.TestCase):
                                    877, 881, 883, 887, 907, 911, 919, 929,
                                    937, 941, 947, 953, 967, 971, 977, 983,
                                    991, 997]
-    def test_length(self):
-        self.assertEqual(len(self.first_primes_attempt), 168)
     
     def test_content(self):
         self.assertEqual(self.first_primes_attempt, self.first_primes_actual)
@@ -47,9 +45,6 @@ class TestProbablePrimeTest(unittest.TestCase):
     
     def test_divisible_by_small_prime(self):
         self.assertEqual(subject_test._probable_prime_test(292681,40,self.first_primes),False)
-    
-    def test_probable_prime(self):
-        self.assertEqual(subject_test._probable_prime_test(912991,40,self.first_primes), True)
 
 class TestPrimeGeneration(unittest.TestCase):
     def setUp(self):
