@@ -31,6 +31,7 @@ def UI():
                 key = keyhandler._get_key(key_to_use+"_private")
             else:
                 key = None
+                print("Avainta ei löytynyt")
             if key != None:
                 name_of_message = input("Minkä nimiseen tiedostoon viesti tallennetaan?\nJätä tiedostopäätteet pois ja mielellään myös erikoismerkit varuilta  ")
                 encrypt._encrypt(msg_to_encrypt, key, name_of_message)
@@ -45,6 +46,7 @@ def UI():
                 key = keyhandler._get_key(key_to_use+"_private")
             else:
                 key = None
+                print("Avainta ei löytynyt")
             if key != None:
                 message = encrypt._decrypt(file_to_decrypt,key)
                 print(message)

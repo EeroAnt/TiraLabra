@@ -18,4 +18,4 @@ def _get_key(key):
             keys = file.readlines()
         return (keys[0],keys[1])
     except:
-        print("Avainta ei löytynyt")
+        return None
