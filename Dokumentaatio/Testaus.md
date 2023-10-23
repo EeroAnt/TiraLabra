@@ -5,12 +5,13 @@ Testit voi ajaa komennolla "coverage run --branch -m pytest src" ja komennolla "
 Sovelluslogiikkaa on testattu yksikkötesteillä. Käyttöliittymiä manuaalisesti.
 ![](kattavuus.png)
 
+Testit vievät noin minuutin. Kaikki muu toimii hyvin nopsasti, mutta alkuluvun tuottaminen Miller-Rabin -testillä ottaa aikansa. Tässä tulee myös testattua sen tehokkuutta, koska Miller-Rabinin tarkkuutta testattaessa tuotetaan 40 alkulukua ja avainpareja tuotettaessa aina 2 lisää. Jos testeihin ei kulu useampaa minuuttia, niin asian pitäisi olla ihan mukavasti.
 
 Testailin pythonin unittestillä ehkä osittain turhiakin asioita. Testasin mm.
  - onko tuottamani pienten alkulukujen listan sisältö on oikein.
  - factor_out funktiota testasin kahdella luvulla, parillisella ja parittomalla
  - koitin alkulukutestiä parittomalla komposiitilla
- - luon 40 kpl potentiaalisia alkulukuja ja tarkastan ne sympyn isPrime()-funktiolla. Hyväksyn yhden ei-alkuluvun, koska kyse on epädeterministestä funktiosta kuitenkin.
+ - luon 40 kpl potentiaalisia alkulukuja ja tarkastan ne sympyn isPrime()-funktiolla. Hyväksyn yhden ei-alkuluvun, koska kyse on epädeterministestä funktiosta kuitenkin. Tässä menee valtaosa testien käyttämästä ajasta
  - testaan matikkapalikat.py:n apufunktiot yksittäisillä syötteillä. Tämä tuntuu nimelliseltä testikattavuuden kasvattamiselta, mutta jos jokin isompi ei toimi ja joku näistä testeistä epäonnistuu, on kait helppo lähteä liikkeelle täältä.
  - avaimia testaan lähtökohtaisesti vain, onko tulosteen tyyppi oikein. Avaimen luomiseen liittyy satunnaisuutta, enkä keksinyt kuinka luoda kattavaa ja determinististä testiä, joka antaisi parempaakaan dataa ulos.
  - Salausta testaan purkamalla. Purku ei toimi, jos salaus ei toimi. Purun osalta testaan oikeaa avainta, väärää avainta ja huonoa tiedostonimeä.
