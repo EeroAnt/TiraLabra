@@ -22,7 +22,7 @@ Ohjelma pyytää syötteeksi purettavan tiedoston tiedostonimeä ja käytettäv�
 
 ## Huomioita:
  - Avainta kysyttäessä ensiksi kysytään avaimen nimeä ja sen jälkeen tarkentamaan, käytetäänkö julkista (j) vai yksityistä (y) avainta.
- - Salaus ja purku toimii utf-8 merkistöllä, joten ääkköset tulee jättää pois salattavista viesteistä.
+ - Salaus ja purku toimii utf-8 merkistöllä
 
 ## Testaus:
 Testit voi ajaa virtuaaliympäristössä komennolla 'poetry invoke run test' ja kattavuusraportin luotua testien kanssa komennolla 'poetry run invoke report'.
