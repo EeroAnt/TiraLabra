@@ -24,15 +24,24 @@ def UI():
         if choise == "2":
             msg_to_encrypt = input("Salattava viesti: ")
             key_to_use = input("Millä avaimella: ")
-            key_type = input("Julkinen vai yksityinen? (j/y)")
-            if key_type == "j":
-                key = keyhandler._get_key(key_to_use+"_public")
-            elif key_type == "y":
-                key = keyhandler._get_key(key_to_use+"_private")
-            if key != None:
-                name_of_message = input("Minkä nimiseen tiedostoon viesti tallennetaan?\nJätä tiedostopäätteet pois ja mielellään myös erikoismerkit varuilta.")
-                encrypt._encrypt(msg_to_encrypt, key, name_of_message)
-                print("\nSalattu\n")
+            if locator._locate_key(key_to_use):
+                while True:
+                    key_type = input("Julkinen vai yksityinen? (j/y)")
+                    if key_type == "j":
+                        key = keyhandler._get_key(key_to_use+"_public")
+                        break
+                    elif key_type == "y":
+                        key = keyhandler._get_key(key_to_use+"_private")
+                        break
+                if key != None:
+                    name_of_message = input("Minkä nimiseen tiedostoon viesti tallennetaan?\nJätä tiedostopäätteet pois ja mielellään myös erikoismerkit varuilta.")
+                    try:
+                        encrypt._encrypt(msg_to_encrypt, key, name_of_message)
+                        print("\nSalattu\n")
+                    except:
+                        print("\nSalaus epäonnistui\n")
+            else:
+                print("\nAvainta ei löytynyt\n")
         if choise =="3":
             file_to_decrypt = input("Minkä nimisen tiedoston viestin salaus puretaan?")
             if locator._locate_message(file_to_decrypt):
