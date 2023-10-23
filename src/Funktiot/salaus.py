@@ -4,13 +4,13 @@ def _encrypt(message,key,name_of_message):
     string_to_bytes = message.encode('utf-8') + b'\x01'
     bytes_to_int = int.from_bytes(string_to_bytes, 'little')
     encrypted_msg = pow(bytes_to_int,int(key[0]),int(key[1]))
-    with open("messages/"+name_of_message+".txt", "w") as file:
+    with open("src/Viestit/"+name_of_message+".txt", "w") as file:
         file.write(str(encrypted_msg))
 
 
 def _decrypt(filename,key):
     try:
-        with open("messages/"+filename+".txt", "r") as file:
+        with open("src/Viestit/"+filename+".txt", "r") as file:
             message = int(file.read())
     except:
         return "Tiedostoa ei löytynyt"
