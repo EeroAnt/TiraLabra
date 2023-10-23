@@ -9,6 +9,6 @@ def test(ctx):
     ctx.run("pytest src", pty=True)
 
 @task
-def coverage_report(ctx):
+def report(ctx):
     ctx.run("coverage run --branch -m pytest src", pty=True)
     ctx.run("coverage html", pty=True)
