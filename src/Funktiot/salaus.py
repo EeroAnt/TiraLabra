@@ -1,12 +1,15 @@
 import Funktiot.avaintallennus as keyhandler
 
 def _encrypt(message,key,name_of_message):
-    string_to_bytes = message.encode('utf-8') + b'\x01'
-    bytes_to_int = int.from_bytes(string_to_bytes, 'little')
-    encrypted_msg = pow(bytes_to_int,int(key[0]),int(key[1]))
-    with open("src/Viestit/"+name_of_message+".txt", "w") as file:
-        file.write(str(encrypted_msg))
-
+    try:
+        string_to_bytes = message.encode('utf-8') + b'\x01'
+        bytes_to_int = int.from_bytes(string_to_bytes, 'little')
+        encrypted_msg = pow(bytes_to_int,int(key[0]),int(key[1]))
+        with open("src/Viestit/"+name_of_message+".txt", "w") as file:
+            file.write(str(encrypted_msg))
+        print("\nSalattu\n")
+    except:
+        print("\nSalaus epäonnistui\n")
 
 def _decrypt(filename,key):
     try:

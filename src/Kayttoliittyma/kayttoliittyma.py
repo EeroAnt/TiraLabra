@@ -16,11 +16,7 @@ def UI():
         if choise == "1":
             (public_modulus, public_exponent, private_decryptor) = keygenerator._generate_key()
             name = input("\nMillä nimellä avain tallennetaan? ")
-            try:
-                keyhandler._save_key(name, public_modulus,public_exponent,private_decryptor)
-                print(f"\nAvain, {name}, tallennettu\n")
-            except:
-                print("\nJotain meni pieleen\n")
+            keyhandler._save_key(name, public_modulus,public_exponent,private_decryptor)
         if choise == "2":
             msg_to_encrypt = input("Salattava viesti: ")
             key_to_use = input("Millä avaimella: ")
@@ -35,11 +31,7 @@ def UI():
                         break
                 if key != None:
                     name_of_message = input("Minkä nimiseen tiedostoon viesti tallennetaan?\nJätä tiedostopäätteet pois ja mielellään myös erikoismerkit varuilta.")
-                    try:
-                        encrypt._encrypt(msg_to_encrypt, key, name_of_message)
-                        print("\nSalattu\n")
-                    except:
-                        print("\nSalaus epäonnistui\n")
+                    encrypt._encrypt(msg_to_encrypt, key, name_of_message)
             else:
                 print("\nAvainta ei löytynyt\n")
         if choise =="3":
