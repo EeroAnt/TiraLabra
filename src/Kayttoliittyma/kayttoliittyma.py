@@ -1,7 +1,7 @@
 import Funktiot.avaingeneraattori as keygenerator
 import Funktiot.avaintallennus as keyhandler
-import Funktiot.salaus as encrypt
-import Funktiot.paikannus as locator
+import Kayttoliittyma.salauskayttoliittyma as encrypt_ui
+import Kayttoliittyma.purkkukayttoliittyma as decrypt_ui
 
 def UI():
     while True:
@@ -18,37 +18,8 @@ def UI():
             name = input("\nMillä nimellä avain tallennetaan? ")
             keyhandler._save_key(name, public_modulus,public_exponent,private_decryptor)
         if choise == "2":
-            msg_to_encrypt = input("Salattava viesti: ")
-            key_to_use = input("Millä avaimella: ")
-            if locator._locate_key(key_to_use):
-                while True:
-                    key_type = input("Julkinen vai yksityinen? (j/y)")
-                    if key_type == "j":
-                        key = keyhandler._get_key(key_to_use+"_public")
-                        break
-                    elif key_type == "y":
-                        key = keyhandler._get_key(key_to_use+"_private")
-                        break
-                if key != None:
-                    name_of_message = input("Minkä nimiseen tiedostoon viesti tallennetaan?\nJätä tiedostopäätteet pois ja mielellään myös erikoismerkit varuilta.")
-                    encrypt._encrypt(msg_to_encrypt, key, name_of_message)
-            else:
-                print("\nAvainta ei löytynyt\n")
+            encrypt_ui._encrypt_ui()
         if choise =="3":
-            file_to_decrypt = input("Minkä nimisen tiedoston viestin salaus puretaan?")
-            if locator._locate_message(file_to_decrypt):
-                key_to_use = input("Millä avaimella:")
-                if locator._locate_key(key_to_use):              
-                    key_type = input("Julkinen vai yksityinen? (j/y)")
-                    if key_type == "j":
-                        key = keyhandler._get_key(key_to_use+"_public")
-                    elif key_type == "y":
-                        key = keyhandler._get_key(key_to_use+"_private")
-                    message = encrypt._decrypt(file_to_decrypt,key)
-                    print("\n"+message+"\n")
-                else:
-                    print("\nAvainta ei löytynyt\n")
-            else:
-                print("\nTiedostoa ei löytynyt\n")
+            decrypt_ui._decrypt_ui()
         if choise == "0":
             break
